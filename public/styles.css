@@ -1,0 +1,232 @@
+body {
+  padding: 0 12px;
+}
+
+p {
+  padding: 0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header > h1 {
+  width: 70%;
+}
+
+nav {
+  width: 40%;
+}
+
+.navList {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navList > li {
+  list-style: none;
+  padding: 12px 24px;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:visited,
+a:active,
+a::after,
+a:hover {
+  font-weight: bold;
+}
+
+.active {
+  font-weight: bold;
+}
+
+input,
+textarea {
+  padding: 6px;
+}
+
+.wrapper {
+  padding-right: 24px;
+}
+
+/* Signup */
+.signupWrapper {
+  display: flex;
+  justify-content: center;
+}
+.signupLink {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  border: 1px, solid, rgb(229, 223, 223);
+  border-radius: 8px;
+  padding: 0 18px;
+}
+
+.avatar {
+  display: flex;
+  background-color: rgb(197, 212, 234);
+  height: 30px;
+  width: 30px;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 19px;
+  margin-right: 16px;
+  font-size: small;
+}
+
+.userFullName {
+  font-size: medium;
+  /* font-weight: bold; */
+}
+
+.avatarContainer {
+  display: flex;
+  align-items: center;
+  /* background-color: green; */
+  padding: 0;
+  margin: 0;
+}
+
+.nameAndDateContainer {
+  display: flex;
+  align-items: center;
+  /* background-color: red; */
+  width: 30%;
+}
+
+.textContainer {
+  /* background-color: red; */
+  padding-left: 3rem;
+  margin-top: -1.5rem;
+}
+
+.title {
+  font-size: larger;
+  font-weight: bold;
+}
+
+.text {
+  font-size: medium;
+  margin-top: -10px;
+}
+
+.date {
+  font-size: x-small;
+  /* margin-top: 1px; */
+  /* margin-top: -0.8rem; */
+}
+
+.error {
+  color: red;
+  font-size: small;
+  margin-top: -8px;
+  margin-bottom: 8px;
+}
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+
+.formContainer > input,
+textarea {
+  margin-bottom: 12px;
+}
+
+.formContainer > label {
+  margin-bottom: 4px;
+}
+
+.formContainer > button {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  width: 40%;
+  margin-top: 14px;
+}
+
+.postTextContainer {
+  padding-left: 0;
+}
+
+/* Profile */
+.profileTextContainer {
+  padding-left: 0;
+  margin-top: -1.5rem;
+}
+
+.postCount {
+  margin-bottom: 8px;
+}
+
+.logoutBtn {
+  display: flex;
+  justify-self: flex-end;
+  background-color: red;
+  color: white;
+  border: 0;
+  padding: 4px 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.clubMember {
+  background-color: green;
+  color: white;
+  width: fit-content;
+  padding: 4px;
+}
+
+.joinBtnWrapper {
+  display: flex;
+}
+
+.notClubMember {
+  background-color: red;
+  color: white;
+  width: fit-content;
+  padding: 4px;
+}
+
+#joinClubBtn {
+  margin-left: 4px;
+}
+
+#clubMemberCredentialDialog {
+  width: 40%;
+}
+
+#secret_passcode {
+  width: 95%;
+}
+
+.dialogBtnWrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.dialogBtnWrapper > button {
+  margin: 5px 8px;
+}

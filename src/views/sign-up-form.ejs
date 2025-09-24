@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="/styles.css">
+
+  </head>
+  <body>
+    <div class="formWrapper">
+
+      <h1>Sign Up</h1>
+      <form class="formContainer" action="/sign-up" method="POST">
+          <label for="name">Name</label>
+          <input id="name" name="name" value="<%= old.name || '' %>" />
+          <% if (errors.name) { %>
+            <div class="error"><%= errors.name.msg %></div>
+          <% } %>
+  
+        <label for="email">Email</label>
+        <input id="email" name="email" value="<%= old.email || '' %>" type="email" />
+        <% if (errors.email) { %>
+          <p class="error"><%= errors.email.msg %></p>
+        <% } %>
+  
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" value="<%= old.username || '' %>" />
+        <% if (errors.username) { %>
+          <p class="error"><%= errors.username.msg %></p>
+        <% } %>
+  
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" />
+        <% if (errors.password) { %>
+          <p class="error"><%= errors.password.msg %></p>
+        <% } %>
+  
+        <label for="confirm_password">Confirm Password</label>
+        <input id="confirm_password" name="confirm_password" type="password" />
+        <% if (errors.confirm_password) { %>
+          <p class="error"><%= errors.confirm_password.msg %></p>
+        <% } %>
+  
+        <button type="submit">Sign Up</button>
+        <div class="signupWrapper">
+          <p>Already have an account? <a class="signupLink" href="/log-in">Log in</a></p>
+      </div>
+      </form>
+    </div>
+  </body>
+</html>
