@@ -170,63 +170,75 @@ textarea {
   padding-left: 0;
 }
 
-/* Profile */
-.profileTextContainer {
-  padding-left: 0;
-  margin-top: -1.5rem;
+/* New File Upload Form */
+#fileName {
+  margin-top: 12px;
 }
 
-.postCount {
-  margin-bottom: 8px;
+.newItemImageWrapper {
+  position: relative;
 }
 
-.logoutBtn {
-  display: flex;
-  justify-self: flex-end;
-  background-color: red;
-  color: white;
-  border: 0;
-  padding: 4px 10px;
-  font-weight: bold;
+.newItemImage {
+  display: none;
+  width: 9rem;
+  height: 9rem;
+  margin-bottom: -1rem;
+  border-radius: 8px;
+}
+
+.newImageDltBtn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 10;
+  right: 10;
+  height: 24px;
+  width: 24px;
+  border-radius: 12px;
+  background-color: white;
+}
+
+.deleteBtn {
+  height: 15px;
+  width: 15px;
   cursor: pointer;
 }
 
-.clubMember {
-  background-color: green;
-  color: white;
-  width: fit-content;
-  padding: 4px;
+.newItemImageInput {
+  display: block;
 }
 
-.joinBtnWrapper {
+.inputContainer {
   display: flex;
+  width: 100%;
+  /* background-color: red; */
+  flex-wrap: wrap;
 }
 
-.notClubMember {
-  background-color: red;
-  color: white;
-  width: fit-content;
-  padding: 4px;
+.labelInputWrapper {
+  display: flex;
+  padding: 12px;
+  align-items: flex-start;
+  width: 80%;
+  /* background-color: green; */
+  margin: 3px;
 }
 
-#joinClubBtn {
-  margin-left: 4px;
+.labelInputWrapper > input {
+  width: 60%;
 }
 
-#clubMemberCredentialDialog {
+.labelInputWrapper > label {
+  margin-right: 8px;
+  width: 20%;
+  /* background-color: aqua; */
+}
+
+.submitBtn {
+  display: flex;
   width: 40%;
-}
-
-#secret_passcode {
-  width: 95%;
-}
-
-.dialogBtnWrapper {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 8px;
-}
-
-.dialogBtnWrapper > button {
-  margin: 5px 8px;
+  justify-content: center;
+  align-self: center;
 }

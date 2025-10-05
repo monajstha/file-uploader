@@ -75,3 +75,10 @@ export const insertNewUser = async ({
     return { success: false };
   }
 };
+
+export const insertNewFile = async () => {
+  try {
+  } catch (error) {
+    console.log("Error while ");
+  }
+};

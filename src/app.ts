@@ -7,6 +7,7 @@ import session from "express-session";
 import { PrismaSessionStore } from "@quixo3/prisma-session-store";
 import { PrismaClient } from "@prisma/client";
 import authRoutes from "@routes/authRoute";
+import dashboardRoutes from "@routes/dashboardRoute";
 
 const app = express();
 
@@ -56,7 +57,7 @@ app.use((req, res, next) => {
 
 // Routes
 app.use("/", authRoutes);
-// app.use("/posts", postsRoutes);
+app.use("/file", dashboardRoutes);
 // app.use("/profile", profileRoutes);
 
 // Handle all unmatched routes

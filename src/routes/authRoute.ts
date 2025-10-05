@@ -29,7 +29,7 @@ authRouter.post(
     next();
   },
   passport.authenticate("local", {
-    successRedirect: "/",
+    successRedirect: "/file/new",
     failureRedirect: "/log-in",
     failureMessage: true, // Displays the message set on done callback when set true, or pass message to overwrite
   })
