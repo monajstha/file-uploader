@@ -21,9 +21,34 @@ model Session {
 }
 
 model User {
-  id       String @id @default(uuid())
-  name     String
-  email    String @unique
-  username String @unique
-  password String
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  username  String   @unique
+  password  String
+  folders   Folder[]
+  files     File[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Folder {
+  id        String   @id @default(uuid())
+  name      String
+  createdBy User     @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  userId    String
+  files     File[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model File {
+  id        String   @id @default(uuid())
+  name      String
+  createdBy User     @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  userId    String
+  locatedIn Folder?  @relation(fields: [folderId], references: [id], onUpdate: Cascade, onDelete: Restrict)
+  folderId  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
