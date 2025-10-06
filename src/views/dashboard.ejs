@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles.css" />
+    <title>Document</title>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const newFolderBtn = document.getElementById("newFolderBtn");
+        const newFolderDialog = document.getElementById("newFolderDialog");
+        const cancelFolderBtn = document.getElementById("cancelFolderBtn");
+        const createFolderBtn = document.getElementById("createFolderBtn");
+        const addFolderForm = document.getElementById("addFolderForm");
+
+        newFolderBtn.addEventListener("click", () => {
+          newFolderDialog.showModal();
+        });
+
+        cancelFolderBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          newFolderDialog.close();
+        });
+
+        createFolderBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          addFolderForm.submit();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <%- include('header') %>
+    <dialog id="newFolderDialog">
+      <form id="addFolderForm" action="/folder/new" method="post">
+        <div class="addFolderInputContainer">
+          <label id="newFolderLabel" for="name">New Folder</label>
+          <input
+            name="name"
+            type="text"
+            required
+            placeholder="Enter the name of the folder"
+          />
+        </div>
+        <div class="btnContainer">
+          <button id="cancelFolderBtn">Cancel</button>
+          <button id="createFolderBtn">Create</button>
+        </div>
+      </form>
+    </dialog>
+    <div class="addBtnWrapper">
+      <div id="newFolderBtn" class="addBtn">
+        <img
+          class="addIcon"
+          src="https://static.thenounproject.com/png/2310577-200.png"
+          alt="Add Icon"
+        />
+        <p>New Folder</p>
+      </div>
+      <div id="newFileBtn" class="addBtn">
+        <img
+          class="addIcon"
+          src="https://static.thenounproject.com/png/2310577-200.png"
+          alt="Add Icon"
+        />
+        <p>New File</p>
+      </div>
+    </div>
+    <div>
+        <div class="folderTableHeadings">
+            <div>
+                <p>Name</p>
+            </div>
+            <div>
+                <p>Owner</p>
+            </div>
+            <div>
+                <p>Date Modified</p>
+            </div>
+                <p>Actions</p>
+        </div>
+        <% folders.map((folder) => { %>
+            <div class="folderCard">
+                <div class="folderIconWrapper">
+                    <img class="folderIcon" src="https://freesvg.org/img/Folder-1.png" alt="folder icon">
+                    <p><%= folder.name %></p>
+                </div>
+                <div>
+                    <p><%= locals.currentUser.name %></p>
+                </div>
+                <div>
+                    <p><%= getDayAndTime(folder.updatedAt)  %></p>
+                </div>
+                <!-- <div> -->
+                    <img class="menuIcon" src="https://static.thenounproject.com/png/2392165-200.png" alt="Menu Icon">
+                <!-- </div> -->
+            </div>
+       <% }) %>
+    </div>
+  </body>
+</html>

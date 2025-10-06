@@ -4,10 +4,12 @@ import { postValidation } from "@middlewares/validators/postValidator";
 import { Router } from "express";
 import { validationResult } from "express-validator";
 import { fileUploadFormGet } from "@controllers/dashboardController";
+import { folderFormPost } from "@controllers/folderController";
 
 const dashboardRoute = Router();
 
 dashboardRoute.get("/new", isAuth, fileUploadFormGet);
+dashboardRoute.post("/folder/new", isAuth, folderFormPost);
 // dashboardRoute.get("/new", isAuth, newPostFormGet);
 // dashboardRoute.post(
 //   "/new",

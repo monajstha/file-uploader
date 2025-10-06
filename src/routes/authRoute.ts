@@ -5,15 +5,15 @@ import {
   signupFormPost,
 } from "@controllers/authController";
 import passport from "passport";
-// import { allPostsGet } from "@controllers/postsController";
 import { isAuth } from "@middlewares/authMiddleware";
 import { signupValidation } from "@middlewares/validators/signupValidator";
 import { validationResult } from "express-validator";
 import { loginValidation } from "@middlewares/validators/loginValidator";
+import { allFoldersGet } from "@controllers/folderController";
 
 const authRouter: Router = Router();
 
-// authRouter.get("/", isAuth, allPostsGet);
+authRouter.get("/", isAuth, allFoldersGet);
 authRouter.get("/log-in", loginFormGet);
 authRouter.post(
   "/log-in",
@@ -29,7 +29,7 @@ authRouter.post(
     next();
   },
   passport.authenticate("local", {
-    successRedirect: "/file/new",
+    successRedirect: "/",
     failureRedirect: "/log-in",
     failureMessage: true, // Displays the message set on done callback when set true, or pass message to overwrite
   })

@@ -242,3 +242,94 @@ textarea {
   justify-content: center;
   align-self: center;
 }
+
+/* Add Button */
+.addIcon {
+  height: 20px;
+  width: 20px;
+}
+
+.addBtn {
+  display: flex;
+  align-items: center;
+  background-color: rgb(180, 215, 246);
+  height: auto;
+  width: fit-content;
+  padding: 0 8px;
+  border-radius: 6px;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.addBtnWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Dialog */
+#newFolderDialog {
+  padding: 2em;
+  width: 25rem;
+  border: rgb(229, 223, 223);
+  border-radius: 8px;
+}
+
+.addFolderInputContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+#newFolderLabel {
+  font-size: larger;
+  margin-bottom: 12px;
+}
+
+.btnContainer {
+  display: flex;
+  justify-self: flex-end;
+  margin: 12px 0px;
+  gap: 8px;
+}
+
+/* Folder listing */
+.folderCard,
+.folderTableHeadings {
+  display: flex;
+  /* justify-content: space-around; */
+  width: 70%;
+  align-items: center;
+  border-bottom: 1px solid rgb(176, 189, 202);
+  /* background-color: red; */
+  padding: 0px 12px;
+}
+
+.folderCard > div,
+.folderTableHeadings > div {
+  width: 32%;
+}
+
+.folderTableHeadings > div > p {
+  font-weight: bold;
+}
+
+.folderIconWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.folderIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.folderCard:hover {
+  background-color: rgb(207, 219, 230);
+}
+
+.menuIcon {
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+}
