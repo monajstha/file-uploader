@@ -1,4 +1,4 @@
-import { PrismaClient, User, Prisma } from "@prisma/client";
+import { PrismaClient, User, Prisma, File } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
@@ -76,8 +76,19 @@ export const insertNewUser = async ({
   }
 };
 
-export const insertNewFile = async () => {
+export const insertNewFile = async ({
+  name,
+  userId,
+  folderId,
+}: {
+  name: string;
+  userId: string;
+  folderId: string;
+}) => {
   try {
+    const file = await prisma.file.create({
+      data: { name, userId, folderId },
+    });
   } catch (error) {
     console.log("Error while ");
   }
@@ -100,11 +111,28 @@ export const insertNewFolder = async ({
   }
 };
 
-export const getAllFolders = async () => {
+export const getAllFolders = async (userId: string) => {
   try {
-    const folders = await prisma.folder.findMany();
+    const folders = await prisma.folder.findMany({
+      where: { userId },
+    });
     return folders;
   } catch (error) {
     console.log("Error while getting folders from db: ", error);
+  }
+};
+
+export const getAllFilesFromFolder = async (
+  folderId: string
+): Promise<{ name: string; files: File[] } | undefined> => {
+  try {
+    const folder = await prisma.folder.findUnique({
+      where: { id: folderId },
+      select: { name: true, files: true },
+    });
+    if (!folder) return;
+    return folder;
+  } catch (error) {
+    console.log("Error while getting files from db: ", error);
   }
 };

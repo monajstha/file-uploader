@@ -8,6 +8,7 @@ import { PrismaSessionStore } from "@quixo3/prisma-session-store";
 import { PrismaClient } from "@prisma/client";
 import authRoutes from "@routes/authRoute";
 import folderRoutes from "@routes/folderRoute";
+import fileRoutes from "@routes/fileRoute";
 
 const app = express();
 
@@ -57,18 +58,17 @@ app.use((req, res, next) => {
 
 // Routes
 app.use("/", authRoutes);
-app.use("/folder", folderRoutes);
-// app.use("/file", dashboardRoutes);
-// app.use("/profile", profileRoutes);
+app.use("/folders", folderRoutes);
+app.use("/files", fileRoutes);
 
-// Handle all unmatched routes
-app.use((req: Request, res: Response, next: NextFunction) => {
-  const error = new Error("The page you are looking for isn't here :(");
-  (error as any).status = 404;
-  next(error);
-});
+// // Handle all unmatched routes
+// app.use((req: Request, res: Response, next: NextFunction) => {
+//   const error = new Error("The page you are looking for isn't here :(");
+//   (error as any).status = 404;
+//   next(error);
+// });
 
-// Global error handler
-app.use(errorHandler);
+// // Global error handler
+// app.use(errorHandler);
 
 export default app;

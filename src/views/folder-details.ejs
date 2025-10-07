@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles.css" />
+    <title>Document</title>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // File upload
+        const fileUploadInput = document.getElementById('fileUpload');
+        const fileUploadForm = document.getElementById('fileUploadForm');
+         
+       fileUploadInput.onchange=((ev)=>{
+        // const folderId = '<%- JSON.stringify(folderId) %>';
+        // console.log({folderId});
+
+        fileUploadForm.submit()
+       })
+      });
+    </script>
+  </head>
+  <body>
+    <%- include('header') %>
+    <dialog id="newFolderDialog">
+      <form id="addFolderForm" action="/folders/new" method="post">
+        <div class="addFolderInputContainer">
+          <label id="newFolderLabel" for="name">New Folder</label>
+          <input
+            name="name"
+            type="text"
+            required
+            placeholder="Enter the name of the folder"
+          />
+        </div>
+        <div class="btnContainer">
+          <button id="cancelFolderBtn">Cancel</button>
+          <button id="createFolderBtn">Create</button>
+        </div>
+      </form>
+    </dialog>
+    <div class="addBtnWrapper">
+        <form id="fileUploadForm" action="/files/new" method="post" enctype="multipart/form-data">
+            <label for="fileUpload" id="newFileBtn" class="addBtn">
+              <img
+                class="addIcon"
+                src="https://static.thenounproject.com/png/2310577-200.png"
+                alt="Add Icon"
+              />
+              <p>New File</p>
+              <input name="fileUpload" type="file" id="fileUpload"  />
+            </label>
+            <input name="folderId" type="hidden" value="<%= folderId %>">
+        </form>
+    </div>
+    <div class="foldersWrapper">
+       <div>
+        <h3> FileShare > <%= name %></h3>
+       </div>
+        <% if(files.length){ %>
+            <div class="folderTableHeadings">
+                <div>
+                    <p>Name</p>
+                </div>
+                <div>
+                    <p>Owner</p>
+                </div>
+                <div>
+                    <p>Date Uploaded</p>
+                </div>
+                    <p>Actions</p>
+            </div>
+            <% files.map((file) => { %>
+                <div class="folderCard">
+                    <div class="folderIconWrapper">
+                        <img class="folderIcon" src="https://static.thenounproject.com/png/2058975-200.png" alt="file icon">
+                        <p><%= file.name %></p>
+                    </div>
+                    <div>
+                        <p><%= locals.currentUser.name %></p>
+                    </div>
+                    <div>
+                        <p><%= getDayAndTime(file.createdAt)  %></p>
+                    </div>
+                    <!-- <div> -->
+                        <img class="menuIcon" src="https://static.thenounproject.com/png/2392165-200.png" alt="Menu Icon">
+                    <!-- </div> -->
+                </div>
+            <% }) %>
+        <% } else { %>
+            <div>No files yet. Click new file to upload files!</div>
+        <% } %>
+    </div>
+  </body>
+</html>

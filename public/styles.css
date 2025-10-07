@@ -296,12 +296,15 @@ textarea {
 .folderCard,
 .folderTableHeadings {
   display: flex;
-  /* justify-content: space-around; */
   width: 70%;
   align-items: center;
   border-bottom: 1px solid rgb(176, 189, 202);
-  /* background-color: red; */
   padding: 0px 12px;
+}
+
+.foldersWrapper > a:hover {
+  font-weight: normal;
+  cursor: default;
 }
 
 .folderCard > div,
@@ -309,7 +312,8 @@ textarea {
   width: 32%;
 }
 
-.folderTableHeadings > div > p {
+.folderTableHeadings > div > p,
+.folderTableHeadings > p {
   font-weight: bold;
 }
 
@@ -325,11 +329,15 @@ textarea {
 }
 
 .folderCard:hover {
-  background-color: rgb(207, 219, 230);
+  background-color: rgb(219, 227, 235);
 }
 
 .menuIcon {
   width: 1rem;
   height: 1rem;
   cursor: pointer;
+}
+
+input[type="file"] {
+  display: none;
 }

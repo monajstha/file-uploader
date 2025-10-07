@@ -8,6 +8,7 @@
     <title>Document</title>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
+        // Create Folder dialog
         const newFolderBtn = document.getElementById("newFolderBtn");
         const newFolderDialog = document.getElementById("newFolderDialog");
         const cancelFolderBtn = document.getElementById("cancelFolderBtn");
@@ -27,13 +28,15 @@
           e.preventDefault();
           addFolderForm.submit();
         });
+
+      
       });
     </script>
   </head>
   <body>
     <%- include('header') %>
     <dialog id="newFolderDialog">
-      <form id="addFolderForm" action="/folder/new" method="post">
+      <form id="addFolderForm" action="/folders/new" method="post">
         <div class="addFolderInputContainer">
           <label id="newFolderLabel" for="name">New Folder</label>
           <input
@@ -58,16 +61,9 @@
         />
         <p>New Folder</p>
       </div>
-      <div id="newFileBtn" class="addBtn">
-        <img
-          class="addIcon"
-          src="https://static.thenounproject.com/png/2310577-200.png"
-          alt="Add Icon"
-        />
-        <p>New File</p>
-      </div>
+      
     </div>
-    <div>
+    <div class="foldersWrapper">
         <div class="folderTableHeadings">
             <div>
                 <p>Name</p>
@@ -81,7 +77,7 @@
                 <p>Actions</p>
         </div>
         <% folders.map((folder) => { %>
-            <div class="folderCard">
+            <a href="/folders/<%= folder.id %>" class="folderCard">
                 <div class="folderIconWrapper">
                     <img class="folderIcon" src="https://freesvg.org/img/Folder-1.png" alt="folder icon">
                     <p><%= folder.name %></p>
@@ -95,7 +91,7 @@
                 <!-- <div> -->
                     <img class="menuIcon" src="https://static.thenounproject.com/png/2392165-200.png" alt="Menu Icon">
                 <!-- </div> -->
-            </div>
+            </a>
        <% }) %>
     </div>
   </body>

@@ -14,12 +14,12 @@ const verifyCallback: VerifyFunction = async (
     const user = await db.getUserByUsername(username);
 
     if (!user) {
-      return done(null, false, { message: "Incorrect username" });
+      return done(null, false, { message: "Invalid Credentials" });
     }
 
     const match = await bcrypt.compare(password, user.password);
     if (!match) {
-      return done(null, false, { message: "Incorrect password" });
+      return done(null, false, { message: "Invalid Credentails" });
     }
     return done(null, user);
   } catch (err) {
